@@ -3,10 +3,12 @@ import Head from "next/head";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
+import { users } from "../reducers/users";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { useSyncExternalStore } from "react";
 
-const reducers = combineReducers({ reducername });
+const reducers = combineReducers({ users });
 
 const persistConfig = { key: "hackatweet", storage };
 
