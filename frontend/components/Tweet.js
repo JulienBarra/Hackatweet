@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Tweet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleUser,
@@ -6,9 +6,9 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Home() {
+function Tweet() {
   return (
-    <div className={styles.main}>
+    <div className={styles.tweet}>
       <div className={styles.tweet_infos}>
         <FontAwesomeIcon icon={faCircleUser} />
         firstname username date
@@ -22,4 +22,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Tweet;

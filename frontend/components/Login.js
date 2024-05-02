@@ -53,13 +53,12 @@ function Login() {
           Sign in
         </button>
         <ModalLogin
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        openModal={openModal}
-        isSigin={isSigin}
-      />
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+          isSigin={isSigin}
+        />
       </div>
-      
     </div>
   );
 }

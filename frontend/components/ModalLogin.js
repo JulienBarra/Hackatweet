@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import styles from "../styles/ModalLogin.module.css";
+import { useState, useSelector } from "react";
+import Login from "./Login";
 
 const customStyles = {
   content: {
@@ -10,19 +12,22 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#141D27",
-    color: "#FFFFFF"
+    color: "#FFFFFF",
   },
 };
 
 function ModalLogin(props) {
+  const [firstname, setFirstname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   let subtitle;
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = "#FFFFFF";
   }
 
-  return (
+  const modalSignIn = (
     <div className={styles.div_container}>
       <Modal
         isOpen={props.modalIsOpen}
@@ -32,18 +37,91 @@ function ModalLogin(props) {
         contentLabel="Example Modal"
       >
         <div className={styles.top_div}>
-          <p onClick={props.closeModal} className={styles.close_modal}>X</p>
+          <p onClick={props.closeModal} className={styles.close_modal}>
+            X
+          </p>
         </div>
-        <img className={styles.logo_right} src="logo_twitter.png" alt="logo twitter" />
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)} className={styles.h2}>Create your Hackatweet account</h2>
-        <form className={styles.form} >
-          <input className={styles.input} />
-          <input className={styles.input} />
-          <input className={styles.input} />
-          <button className={styles.btn_signup}>Sign up</button>
+        <img
+          className={styles.logo_right}
+          src="logo_twitter.png"
+          alt="logo twitter"
+        />
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)} className={styles.h2}>
+          Connect to Hackatweet
+        </h2>
+        <form className={styles.form}>
+          <input
+            className={styles.input}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+          <input
+            className={styles.input}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <button className={styles.btn_signup}>Sign in</button>
         </form>
       </Modal>
     </div>
+  );
+
+  return !props.isSignin ? (
+    <>
+      {
+        <div className={styles.div_container}>
+          <Modal
+            isOpen={props.modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={props.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+            <div className={styles.top_div}>
+              <p onClick={props.closeModal} className={styles.close_modal}>
+                X
+              </p>
+            </div>
+            <img
+              className={styles.logo_right}
+              src="logo_twitter.png"
+              alt="logo twitter"
+            />
+            <h2
+              ref={(_subtitle) => (subtitle = _subtitle)}
+              className={styles.h2}
+            >
+              Create your Hackatweet account
+            </h2>
+            <form className={styles.form}>
+              <input
+                className={styles.input}
+                placeholder="Firstname"
+                onChange={(e) => setFirstname(e.target.value)}
+                value={firstname}
+              />
+              <input
+                className={styles.input}
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+              />
+              <input
+                className={styles.input}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              <button className={styles.btn_signup}>Sign up</button>
+            </form>
+          </Modal>
+        </div>
+      }
+    </>
+  ) : (
+    modalSignIn
   );
 }
 

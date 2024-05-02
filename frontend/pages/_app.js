@@ -3,10 +3,9 @@ import Head from "next/head";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
-import { users } from "../reducers/users";
-
+import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { useSyncExternalStore } from "react";
+import users from "../reducers/users";
 
 const reducers = combineReducers({ users });
 
