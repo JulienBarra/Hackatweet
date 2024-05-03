@@ -27,6 +27,10 @@ function ModalLogin(props) {
     subtitle.style.color = "#FFFFFF";
   }
 
+  const handleSignUp = () => {};
+
+  const handleSignIn = () => {};
+
   const modalSignIn = (
     <div className={styles.div_container}>
       <Modal
@@ -41,11 +45,13 @@ function ModalLogin(props) {
             X
           </p>
         </div>
-        <img
-          className={styles.logo_right}
-          src="logo_twitter.png"
-          alt="logo twitter"
-        />
+        <div className={styles.div_logo}>
+          <img
+            className={styles.logo_right}
+            src="logo_twitter.png"
+            alt="logo twitter"
+          />
+        </div>
         <h2 ref={(_subtitle) => (subtitle = _subtitle)} className={styles.h2}>
           Connect to Hackatweet
         </h2>
@@ -84,11 +90,13 @@ function ModalLogin(props) {
                 X
               </p>
             </div>
-            <img
-              className={styles.logo_right}
-              src="logo_twitter.png"
-              alt="logo twitter"
-            />
+            <div className={styles.div_logo}>
+              <img
+                className={styles.logo_right}
+                src="logo_twitter.png"
+                alt="logo twitter"
+              />
+            </div>
             <h2
               ref={(_subtitle) => (subtitle = _subtitle)}
               className={styles.h2}
