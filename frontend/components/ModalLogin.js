@@ -1,7 +1,10 @@
 import Modal from "react-modal";
 import styles from "../styles/ModalLogin.module.css";
-import { useState, useSelector } from "react";
-import Login from "./Login";
+import { useState } from "react";
+import Link from "next/link";
+
+import { useDispatch } from "react-redux";
+import { logUser, logoutUser } from "../reducers/users";
 
 const customStyles = {
   content: {
@@ -17,9 +20,13 @@ const customStyles = {
 };
 
 function ModalLogin(props) {
+  const dispatch = useDispatch();
   const [firstname, setFirstname] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [signUpUsername, setSignUpUsername] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
+
+  const [signInUsername, setSignInUsername] = useState("");
+  const [signInPassword, setSignInPassword] = useState("");
 
   let subtitle;
 
@@ -27,9 +34,56 @@ function ModalLogin(props) {
     subtitle.style.color = "#FFFFFF";
   }
 
-  const handleSignUp = () => {};
+  const handleSignUp = () => {
+    fetch("http://localhost:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: firstname,
+        username: signUpUsername,
+        password: signUpPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(
+            logUser({
+              firstname: firstname,
+              username: signUpUsername,
+              token: data.token,
+            })
+          );
+          setFirstname("");
+          setSignUpUsername("");
+          setSignUpPassword("");
+        }
+      });
+  };
 
-  const handleSignIn = () => {};
+  const handleSignIn = () => {
+    fetch("http://localhost:3000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: signUpUsername,
+        password: signUpPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(
+            logUser({
+              username: signUpUsername,
+              token: data.token,
+            })
+          );
+          setSignInUsername("");
+          setSignInPassword("");
+        }
+      });
+  };
 
   const modalSignIn = (
     <div className={styles.div_container}>
@@ -59,16 +113,18 @@ function ModalLogin(props) {
           <input
             className={styles.input}
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            onChange={(e) => setSignInUsername(e.target.value)}
+            value={signInUsername}
           />
           <input
             className={styles.input}
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            onChange={(e) => setSignInPassword(e.target.value)}
+            value={signInPassword}
           />
-          <button className={styles.btn_signup}>Sign in</button>
+          <button className={styles.btn_signup} onClick={() => handleSignIn()}>
+            <Link href="/home">Sign in</Link>
+          </button>
         </form>
       </Modal>
     </div>
@@ -113,16 +169,22 @@ function ModalLogin(props) {
               <input
                 className={styles.input}
                 placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
+                onChange={(e) => setSignUpUsername(e.target.value)}
+                value={signUpUsername}
               />
               <input
                 className={styles.input}
                 placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
+                type="password"
+                onChange={(e) => setSignUpPassword(e.target.value)}
+                value={signUpPassword}
               />
-              <button className={styles.btn_signup}>Sign up</button>
+              <button
+                className={styles.btn_signup}
+                onClick={() => handleSignUp()}
+              >
+                <Link href="/home">Sign up</Link>
+              </button>
             </form>
           </Modal>
         </div>
