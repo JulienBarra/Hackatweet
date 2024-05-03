@@ -6,7 +6,7 @@ import storage from "redux-persist/lib/storage";
 import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import users from "../reducers/users";
-require('../styles/globals.css');
+require("../styles/globals.css");
 
 const reducers = combineReducers({ users });
 
