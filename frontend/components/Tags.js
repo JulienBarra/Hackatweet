@@ -3,8 +3,8 @@ import styles from "../styles/Tags.module.css";
 function Tags() {
   return (
     <div className={styles.tags}>
-      <p>#LOL</p>
-      <p>1 Tweet</p>
+      <h2 className={styles.h2}>#LOL</h2>
+      <p className={styles.nbr_tweet}>1 Tweet</p>
     </div>
   );
 }
