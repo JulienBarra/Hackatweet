@@ -10,36 +10,56 @@ function Home() {
   return (
     <div className={styles.main}>
       <div className={styles.div_left}>
-        <img
-          className={styles.logo}
-          src="logo_twitter.png"
-          alt="logo twitter"
-        />
-        <div className={styles.user_infos}>
-          <FontAwesomeIcon icon={faCircleUser} />
-          <p>FIRSTNAME</p>
-          <p>USERNAME</p>
-          <Link href="/index" className={styles.logout_button}>
-            Logout
-          </Link>
+        <div className={styles.div_left_top}>
+          <img
+            className={styles.logo}
+            src="logo_twitter.png"
+            alt="logo twitter"
+          />
+        </div>
+        <div className={styles.div_left_bottom}>
+          <div className={styles.logo_bottom_left}>
+            <img
+              className={styles.logo_bottom}
+              src="logo_twitter.png"
+              alt="logo twitter"
+            />
+          </div>
+          <div className={styles.user_bottom_left}>
+            <p className={styles.user_firstname}>Firstname</p>
+            <p className={styles.user_id}>Username</p>
+            <div href="/index" className={styles.logout_button}>
+              Logout
+            </div>
+
+          </div>
         </div>
       </div>
       <div className={styles.div_center}>
         <div className={styles.header}>
-          <h3>Home</h3>
-          <div className={styles.counter_button_tweet}>
-            <input placeholder="What's up"></input>
-            <p>
-              <span>0</span>/280
-            </p>
-            <div className={styles.tweet_container}>
-              <Tweet />
+          <h3 className={styles.h3}>Home</h3>
+          <div className={styles.div_input_tweet}>
+            <input className={styles.input_whatsup} placeholder="What's up"></input>
+            <div>
+            </div>
+            <div className={styles.nbr_and_btn_tweet} >
+              <div className={styles.tweet_nbr}>
+                <p>
+                  <span>0</span>/280
+                </p>
+              </div>
+              <div className={styles.tweet_btn}>
+                <p>Tweet</p>
+              </div>
             </div>
           </div>
         </div>
+        <div className={styles.tweet_container}>
+          <Tweet />
+        </div>
       </div>
       <div className={styles.div_right}>
-        <h3>Trends</h3>
+        <h3 className={styles.h3}>Trends</h3>
         <div className={styles.tags_container}>
           <Tags />
         </div>
