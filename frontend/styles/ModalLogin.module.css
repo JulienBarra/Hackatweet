@@ -6,12 +6,19 @@
   display: flex;
   flex-direction: column;
   color: white;
+  align-items: center;
 }
 
 .top_div {
   display: flex;
   justify-content: flex-end;
   background-color: none;
+}
+
+.div_logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo_right {

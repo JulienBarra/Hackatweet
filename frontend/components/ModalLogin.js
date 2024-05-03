@@ -84,11 +84,13 @@ function ModalLogin(props) {
                 X
               </p>
             </div>
-            <img
-              className={styles.logo_right}
-              src="logo_twitter.png"
-              alt="logo twitter"
-            />
+            <div className={styles.div_logo}>
+              <img
+                className={styles.logo_right}
+                src="logo_twitter.png"
+                alt="logo twitter"
+              />
+            </div>
             <h2
               ref={(_subtitle) => (subtitle = _subtitle)}
               className={styles.h2}
