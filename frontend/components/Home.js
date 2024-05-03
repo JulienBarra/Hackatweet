@@ -15,10 +15,14 @@ function Home() {
           src="logo_twitter.png"
           alt="logo twitter"
         />
-        <FontAwesomeIcon icon={faCircleUser} />
-        <p>FIRSTNAME</p>
-        <p>USERNAME</p>
-        <Link href="/index" className={styles.logout_button}>Logout</Link>
+        <div className={styles.user_infos}>
+          <FontAwesomeIcon icon={faCircleUser} />
+          <p>FIRSTNAME</p>
+          <p>USERNAME</p>
+          <Link href="/index" className={styles.logout_button}>
+            Logout
+          </Link>
+        </div>
       </div>
       <div className={styles.div_center}>
         <div className={styles.header}>
