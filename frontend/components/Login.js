@@ -4,7 +4,7 @@ import ModalLogin from "./ModalLogin";
 
 function Login() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [isSigin, setIsSignin] = useState(false);
+  const [isSignin, setIsSignin] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -53,13 +53,12 @@ function Login() {
           Sign in
         </button>
         <ModalLogin
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        openModal={openModal}
-        isSigin={isSigin}
-      />
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+          isSignin={isSignin}
+        />
       </div>
-      
     </div>
   );
 }
